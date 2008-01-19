@@ -1,0 +1,51 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 99-third-option.dpatch by Chris Smith <chris@cs278.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: This patch adds a extra argument that allows you to change
+## DP: which policy field is used for the third value in the triplet.
+
+@DPATCH@
+diff -urNad trunk~/greyfix.c trunk/greyfix.c
+--- trunk~/greyfix.c	2008-01-11 22:45:24.000000000 +0000
++++ trunk/greyfix.c	2008-01-15 14:38:29.000000000 +0000
+@@ -97,6 +97,7 @@
+     PACKAGE_STRING " for %d second%p."
+     "  See http://www.kim-minh.com/pub/greyfix/ for more information.";
+ static const char *singular_string = "", *plural_string = "s";
++static const char *third_record = "recipient";
+ /* As we store IP addresses in Postfix's format, to obtain the network
+  address we first strip `ipv4_network_strip_bytes' numbers (between 0
+  and 4) then we apply `ipv4_network_mask' on the last byte. */
+@@ -677,6 +678,10 @@
+ 	    "\n"
+ 	    "    -/ <nbits>, --network-prefix <nbits>\n"
+ 	    "\n"
++	    "    -3, --third-record <record>\n"
++	    "\n"
++	    "	Valid values, include: 'helo_name', 'recipient'\n"
++	    "\n"
+ 	    "	Only consider the first <nbits> bits of an IPv4 address.\n"
+ 	    "	Defaults to 32 i.e. the whole adresse is significant.\n"
+ 	    "\n"
+@@ -759,6 +764,11 @@
+ 		fatal("Missing argument to --greylisted-action");
+ 	    greylisted_action_fmt = argv[i];
+ 	}
++	else if (optp(argv[i], "-3", "--third-record")) {
++	    if (++i >= argc)
++		fatal("Missing argument to --third-record");
++	    third_record = argv[i];
++	}
+ 	else if (loptp(argv[i], "--dump-triplets")) {
+ 	  dump_triplets = 1;
+ 	}
+@@ -822,7 +832,7 @@
+ 	    && prefixp(state, STR_RCPT)
+ 	    && (ip = find_attribute("client_address"))
+ 	    && (from = find_attribute("sender"))
+-	    && (to = find_attribute("recipient"))) {
++	    && (to = find_attribute(third_record))) {
+ 	    build_triplet_key(ip, from, to);
+ 	    process_smtp_rcpt();
+ 	}

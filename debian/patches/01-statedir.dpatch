@@ -1,0 +1,29 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 01-statedir.dpatch by  <chris@cs278.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Otherwise it gets a bit messy /var/lib/greyfix/var/lib/greyfix uncool
+
+@DPATCH@
+diff -urNad trunk~/Makefile.am trunk/Makefile.am
+--- trunk~/Makefile.am	2008-01-11 17:39:20.000000000 +0000
++++ trunk/Makefile.am	2008-01-11 19:20:42.000000000 +0000
+@@ -1,5 +1,5 @@
+ AUTOMAKE_OPTIONS = foreign
+-datastatedir = $(DESTDIR)$(localstatedir)/lib
++datastatedir = $(localstatedir)/lib
+ sbin_PROGRAMS = greyfix
+ greyfix_SOURCES = greyfix.c policy.c policy.h
+ 
+diff -urNad trunk~/Makefile.in trunk/Makefile.in
+--- trunk~/Makefile.in	2008-01-11 17:39:20.000000000 +0000
++++ trunk/Makefile.in	2008-01-11 19:21:00.000000000 +0000
+@@ -157,7 +157,7 @@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ AUTOMAKE_OPTIONS = foreign
+-datastatedir = $(DESTDIR)$(localstatedir)/lib
++datastatedir = $(localstatedir)/lib
+ greyfix_SOURCES = greyfix.c policy.c policy.h
+ all: config.h
+ 	$(MAKE) $(AM_MAKEFLAGS) all-am
