@@ -378,16 +378,16 @@ do_dump_triplets()
 static void
 build_triplet_key(const char *ip, const char *from, const char *to)
 {
-    int ipv4 = 1;
     const char *endip = strchr(ip, '\n'),
 	*endfrom = strchr(from, '\n'),
 	*endto = strchr(to, '\n');
     size_t lenfrom = endfrom - from,
 	lento = endto - to;
+    int ipv4 = memchr(ip, '.', endip - ip) != 0;
     size_t lenip, total;
     char *buf;
     /* Mangle the IP address so that only the required prefix is used */
-    if (ipv4_network_strip_bytes > 0) {
+    if (ipv4 && ipv4_network_strip_bytes > 0) {
 	const char *p = endip;
 	unsigned int i = ipv4_network_strip_bytes;
 	while (i && --p > ip)
