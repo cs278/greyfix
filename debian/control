@@ -9,9 +9,9 @@ Package: greyfix
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, adduser
 Recommends: postfix (>= 2.1)
-Description: Greyfix is the greylisting policy daemon for Postfix.
-  Greyfix is the greylisting policy daemon for Postfix written by
-  Kim Minh Kaplan.  Greylisting is an anti spam technique described by
-  Evan Harris.  Postfix is a popular mail transport agent developped by
-  Wietse Zweitze Venema.  Greyfix uses Postfix policy mechanism to
-  enable greylisting with Postfix.
+Description: Compact greylisting policy daemon for Postfix.
+ Greyfix is the greylisting policy daemon for Postfix written by
+ Kim Minh Kaplan. Greylisting is an anti spam technique described by
+ Evan Harris. Postfix is a popular mail transport agent developed by
+ Wietse Zweitze Venema. Greyfix uses Postfix policy mechanism to
+ enable greylisting with Postfix.
