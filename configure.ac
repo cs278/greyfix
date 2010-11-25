@@ -1,4 +1,4 @@
-AC_INIT([greyfix], [0.3.8])
+AC_INIT([greyfix], [0.3.9])
 AC_CONFIG_HEADERS([config.h])
 AC_PREREQ(2.59)
 AC_CONFIG_SRCDIR([greyfix.c])

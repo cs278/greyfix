@@ -9,18 +9,14 @@ enable greylisting with Postfix.
 
 <contents depth="1">
 
+It is recommended that you use at least version 0.3.8.
+
 * Latest version
 
-    It is recommended that you upgrade to the latest version.
+[[http://www.kim-minh.com/pub/greyfix/greyfix-0.3.9.tar.gz][greyfix-0.3.9.tar.gz]] ([[http://www.kim-minh.com/pub/greyfix/greyfix-0.3.9.tar.gz.asc][PGP signature]])
 
-[[http://www.kim-minh.com/pub/greyfix/greyfix-0.3.8.tar.gz][greyfix-0.3.8.tar.gz]] ([[http://www.kim-minh.com/pub/greyfix/greyfix-0.3.8.tar.gz.asc][PGP signature]])
-
-   - BUGFIX: when there is an error let the email through and exit the
-     process [[[http://trac.kim-minh.com/greyfix/ticket/5][Ticket #5]]].
-   - BUGFIX: detect deadlocks and resolve them [[[http://trac.kim-minh.com/greyfix/ticket/8][Ticket #8]]].
-   - Don't remove the DB environment.
-   - Remove the unused stats.db database.
-   - Minor install directories fix [[[http://trac.kim-minh.com/greyfix/ticket/7][Ticket #7]]].
+   - BUGFIX: when greylisting by network prefix (option -/) Greyfix
+     would treat all IPv6 addresses as "" (empty string) [[[http://trac.kim-minh.com/greyfix/ticket/9][Ticket #9]]].
 
 * Features
 
@@ -48,8 +44,8 @@ Greyfix uses GNU's build system.  To install the greyfix daemon just
 type the following commands:
 
 <example>
-    $ gzip -cd greyfix-0.3.8.tar.gz | tar xf -
-    $ cd greyfix-0.3.8
+    $ gzip -cd greyfix-0.3.9.tar.gz | tar xf -
+    $ cd greyfix-0.3.9
     $ ./configure
     $ make
     $ su -c 'make install'
@@ -241,6 +237,16 @@ a [[http://trac.kim-minh.com/greyfix/newticket][New Ticket]].
 
 * Older versions
 
+Note that version 0.3.8 fixes important bugs.  Do *not* use earlier
+versions.
+
+   - [[http://www.kim-minh.com/pub/greyfix/greyfix-0.3.8.tar.gz][greyfix-0.3.8.tar.gz]] ([[http://www.kim-minh.com/pub/greyfix/greyfix-0.3.8.tar.gz.asc][PGP signature]])
+      - BUGFIX: when there is an error let the email through and exit the
+	process [[[http://trac.kim-minh.com/greyfix/ticket/5][Ticket #5]]].
+      - BUGFIX: detect deadlocks and resolve them [[[http://trac.kim-minh.com/greyfix/ticket/8][Ticket #8]]].
+      - Don't remove the DB environment.
+      - Remove the unused stats.db database.
+      - Minor install directories fix [[[http://trac.kim-minh.com/greyfix/ticket/7][Ticket #7]]].
    - [[http://www.kim-minh.com/pub/greyfix/greyfix-0.3.7.tar.gz][greyfix-0.3.7.tar.gz]] ([[http://www.kim-minh.com/pub/greyfix/greyfix-0.3.7.tar.gz.asc][PGP signature]])
       - Do not block emails if there is an error.  Previous versions
 	would die.  This would cause Postfix's smtpd to reply with an
