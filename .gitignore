@@ -1,0 +1,9 @@
+.deps/
+Makefile
+config.h
+config.log
+config.status
+greyfix
+greyfix.o
+policy.o
+stamp-h1
