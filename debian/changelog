@@ -1,3 +1,16 @@
+greyfix (0.3.9-0ubuntu0cs1) maverick; urgency=low
+
+  * Imported Upstream version 0.3.9
+  * Allow compilation with BDB v4.7
+  * Allow compilation with BDB v4.8
+  * Remove usr/bin from package directories
+  * Correct spelling mistake and formatting errors in the package
+    description.
+  * Add dpatch to build dependencies
+  * Bump Debian package standard to 3.8.4
+
+ -- Chris Smith <chris@cs278.org>  Thu, 09 Dec 2010 22:55:40 +0000
+
 greyfix (0.3.8-1) unstable; urgency=low
 
   * New upstream release
