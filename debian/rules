@@ -1,6 +1,10 @@
 #!/usr/bin/make -f
-  
+
+# dpatch <http://cdbs-doc.duckcorp.org/en/cdbs-doc.xhtml#id387400>
 include /usr/share/cdbs/1/rules/dpatch.mk
+# needed to use the dpatch tools (like dpatch-edit-patch)
+include /usr/share/dpatch/dpatch.make
+
 include /usr/share/cdbs/1/rules/debhelper.mk
 include /usr/share/cdbs/1/class/autotools.mk
 
